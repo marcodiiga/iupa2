@@ -75,7 +75,7 @@ namespace iupa2 {
     // Guaranteed to be unique by [expr.prim.lambda]/3
 #define std_fn_to_static_fn(fn, fptr) do { \
       auto ll = [](){}; \
-      fptr = std_fn_to_static_fn_helper<decltype(ll)>(fn); \
+      fptr = reinterpret_cast<WNDPROC>(std_fn_to_static_fn_helper<decltype(ll)>(fn)); \
     } while(0)
 
   }
